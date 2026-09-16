@@ -30,6 +30,7 @@ import ExtraS1 from "../assets/Image/backgrounds/Mask group.png";
 import ExtraS2 from "../assets/Image/backgrounds/Mask group (1).png";
 import ExtraS3 from "../assets/Image/backgrounds/image 106.png";
 import ExtraS4 from "../assets/Image/backgrounds/image 107.png";
+import { api } from "../lib/api";
 
 function Main() {
     const [selectedCategory, setSelectedCategory] = useState("Automobiles");
@@ -89,12 +90,20 @@ function Main() {
     const [quantity, setQuantity] = useState("");
     const [unit, setUnit] = useState("Pcs");
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (!item.trim()) {
             alert("Please enter the item you need.");
             return;
         }
-        alert(`Inquiry sent!\nItem: ${item}\nDetails: ${details}\nQuantity: ${quantity} ${unit}`);
+        try {
+            await api.sendInquiry({ item: item.trim(), details, quantity, unit });
+            alert("Inquiry sent successfully.");
+            setItem("");
+            setDetails("");
+            setQuantity("");
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     // Recomended Items

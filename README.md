@@ -1,16 +1,29 @@
-# React + Vite
+# E-commerce storefront
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Responsive React storefront with a lightweight Node API for products, newsletter subscriptions, and product inquiries.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Install dependencies and start the frontend:
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Start the API in a second terminal:
 
-## Expanding the ESLint configuration
+```bash
+npm run server
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The API listens on `http://localhost:3001`. Vite proxies `/api` requests to it during development. Data is persisted in `server/data` and is ignored by git.
+
+Available endpoints:
+
+- `GET /api/health`
+- `GET /api/products?search=&category=`
+- `POST /api/newsletter`
+- `POST /api/inquiries`
+
+The storefront is responsive at tablet and mobile breakpoints, including the header, product grids, listings, details, cart, and footer.

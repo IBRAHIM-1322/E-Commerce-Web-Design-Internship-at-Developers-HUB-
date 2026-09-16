@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import logo from "../assets/Layout/Brand/logo-colored.png";
+import { api } from "../lib/api";
 
 const categories = ["All category", "Electronics", "Clothes", "Home", "Sports", "Toys", "Automotive"];
 
@@ -45,9 +46,14 @@ function Header() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!searchQuery.trim()) { alert("Please enter a search term."); return; }
-    alert(`Searching for "${searchQuery}" in category: ${searchCategory}`);
+    try {
+      const { products } = await api.getProducts({ search: searchQuery.trim(), category: searchCategory });
+      alert(`${products.length} product${products.length === 1 ? "" : "s"} found for "${searchQuery}".`);
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (

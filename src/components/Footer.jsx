@@ -2,20 +2,26 @@ import { useState } from "react";
 import logo from "../assets/Layout/Brand/logo-colored.png";
 import playstore from "../assets/Layout/Misc/Group.png";
 import Appstore from "../assets/Layout/Misc/market-button.png";
+import { api } from "../lib/api";
 
 function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [language, setLanguage] = useState("English");
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!email.trim() || !email.includes("@")) {
       alert("Please enter a valid email address.");
       return;
     }
-    setSubscribed(true);
-    setEmail("");
-    setTimeout(() => setSubscribed(false), 3000);
+    try {
+      await api.subscribe(email.trim());
+      setSubscribed(true);
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 3000);
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const navLinks = {
