@@ -12,12 +12,12 @@ import headset from "../assets/Image/tech/Headphones.png";
 import phone from "../assets/Image/tech/Phone.png";
 
 import chair from "../assets/Image/interior/Soft Chair.png";
-import kitchenDishes from "../assets/Image/interior/Kitchen dishes.png";
-import smartWatch from "../assets/Image/interior/Smart watches.png";
-import kitchenMixer from "../assets/Image/interior/Kitchen mixer.png";
+import kitchenDishes from "../assets/Image/interior/Kitchen Dishes.png";
+import smartWatch from "../assets/Image/interior/Smart Watches.png";
+import kitchenMixer from "../assets/Image/interior/Kitchen Mixer.png";
 import blender from "../assets/Image/interior/Kitchen Mixer.png";
 import homeAppliance from "../assets/Image/interior/Home Appliances.png";
-import coffeeMaker from "../assets/Image/interior/Coffee maker.png";
+import coffeeMaker from "../assets/Image/interior/Coffee Maker.png";
 
 import Bag from "../assets/Layout/alibaba/Image/cloth/Bag.png";
 import Shirt from "../assets/Layout/alibaba/Image/cloth/Shirt.png";
