@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const pages = [
   { path: '/',           label: 'Home' },
@@ -6,40 +6,27 @@ const pages = [
   { path: '/list-view',  label: 'List View' },
   { path: '/details/1',  label: 'Details' },
   { path: '/cart',       label: 'Cart' },
-]
+];
 
 function NavButtons() {
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const currentIndex = pages.findIndex(p => p.path === location.pathname)
-  const prevPage = pages[currentIndex - 1]
-  const nextPage = pages[currentIndex + 1]
+  const currentIndex = pages.findIndex(p => p.path === location.pathname);
+  const prevPage = currentIndex > 0 ? pages[currentIndex - 1] : null;
+  const nextPage = currentIndex < pages.length - 1 ? pages[currentIndex + 1] : null;
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '20px',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'space-between',
-      padding: '0 20px',
-      zIndex: 1000,
-    }}>
+    <div className="fixed bottom-4 inset-x-0 pointer-events-none z-50 flex justify-between site-container">
       {/* Previous Button */}
       {prevPage ? (
         <button
           onClick={() => navigate(prevPage.path)}
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#333',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-          }}
+          className="pointer-events-auto inline-flex items-center gap-1.5 px-3.5 py-2 bg-gray-900/90 hover:bg-gray-900 text-white text-xs sm:text-sm font-medium rounded-full shadow-lg backdrop-blur-sm active:scale-95 transition-all border border-white/20"
         >
-          ← {prevPage.label}
+          <span>←</span>
+          <span className="hidden xs:inline">{prevPage.label}</span>
+          <span className="xs:hidden">Prev</span>
         </button>
       ) : <div />}
 
@@ -47,20 +34,15 @@ function NavButtons() {
       {nextPage ? (
         <button
           onClick={() => navigate(nextPage.path)}
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#333',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-          }}
+          className="pointer-events-auto inline-flex items-center gap-1.5 px-3.5 py-2 bg-blue-600/90 hover:bg-blue-600 text-white text-xs sm:text-sm font-medium rounded-full shadow-lg backdrop-blur-sm active:scale-95 transition-all border border-white/20 ml-auto"
         >
-          {nextPage.label} →
+          <span className="hidden xs:inline">{nextPage.label}</span>
+          <span className="xs:hidden">Next</span>
+          <span>→</span>
         </button>
       ) : <div />}
     </div>
-  )
+  );
 }
 
-export default NavButtons
+export default NavButtons;

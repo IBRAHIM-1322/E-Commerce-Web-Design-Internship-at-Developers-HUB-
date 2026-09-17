@@ -8,125 +8,60 @@
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #1f2937;
+  background-color: #f3f4f6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-container {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    width: min(100% - 3rem, 80rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    width: min(100% - 4rem, 80rem);
+  }
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
 }
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
-@media (max-width: 900px) {
-  [class~="w-10/12"] {
-    width: calc(100% - 2rem);
-  }
-
-  header [class~="w-10/12"] > :first-child {
-    flex-wrap: wrap;
-  }
-
-  header [class~="w-10/12"] > :first-child > [class~="w-1/2"] {
-    order: 3;
-    width: 100%;
-  }
-
-  header [class~="w-10/12"] > :last-child {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  header [class~="w-10/12"] > :last-child > :first-child {
-    min-width: 0;
-    max-width: 100%;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-  }
-
-  header [class~="w-10/12"] > :last-child > :last-child {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  [class~="grid-cols-5"] {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  [class~="grid-cols-4"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  [class~="grid-cols-6"] {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  [class~="w-48"],
-  [class~="w-44"] {
-    width: 10rem;
-  }
+/* Hide scrollbar for clean horizontal scroll chips/tabs on mobile while preserving scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-@media (max-width: 640px) {
-  [class~="w-10/12"] {
-    width: calc(100% - 1.5rem);
-  }
-
-  header [class~="w-10/12"] > :first-child {
-    gap: 0.75rem;
-  }
-
-  header [class~="w-10/12"] > :first-child > :last-child {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0.5rem;
-    overflow-x: auto;
-  }
-
-  header [class~="w-10/12"] > :first-child > :last-child button {
-    flex-shrink: 0;
-  }
-
-  header [class~="w-10/12"] > :last-child > :last-child {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  header [class~="w-10/12"] > :last-child select {
-    width: 100%;
-  }
-
-  [class~="grid-cols-5"],
-  [class~="grid-cols-4"],
-  [class~="grid-cols-6"] {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  [class~="flex"][class~="gap-5"] {
-    flex-direction: column;
-  }
-
-  [class~="flex"][class~="gap-5"] > aside,
-  [class~="flex"][class~="gap-5"] > [class~="w-64"] {
-    width: 100%;
-  }
-
-  footer input[type="email"] {
-    width: min(100%, 20rem);
-  }
-
-  footer > :first-child > :first-child {
-    padding-inline: 1rem;
-  }
-
-  footer > :first-child > :last-child {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  [class~="fixed"][class~="bottom-5"] {
-    padding-inline: 0.75rem;
-  }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
